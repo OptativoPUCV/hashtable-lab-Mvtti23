@@ -239,3 +239,8 @@ Tue Sep 22 20:26:31 UTC 2020:
  1 file changed, 1 insertion(+), 1 deletion(-)
  tests:  0|0
 5e9f2fd
+Tue Sep 22 20:27:01 UTC 2020: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+934f1e7
