@@ -109,5 +109,5 @@ void * nextMap(HashMap * map)
   while((map->buckets[pos] == NULL) || map->buckets[pos]->key == NULL) pos++;
 
   map->current = pos;
-  return map->buckets[pos+1]->value;
+  return map->buckets[pos]->value;
 }
