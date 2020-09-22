@@ -91,7 +91,7 @@ void * searchMap(HashMap * map,  char * key)
   while(map->buckets[pos] != NULL) pos++;
 
   map->current = pos;
-  return map->buckets[pos]->value;
+  return map->buckets[pos];
 }
 
 void * firstMap(HashMap * map) 
