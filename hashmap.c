@@ -96,19 +96,10 @@ void * searchMap(HashMap * map,  char * key)
 
 void * firstMap(HashMap * map) 
 {
-  if(map->buckets[0] != NULL)
-  {
-    map->current = 0;
-    return map->buckets[0]->value;
-  }
-  else
-  {
-    long pos = 0;
-    while(map->buckets[pos] == NULL)
-      pos++;
-    
-    return map->buckets[pos]->value;
-  }
+  long pos = 0;
+  while(map->buckets[pos] == NULL) pos++;
+
+  return map->buckets[pos]->value;
 }
 
 void * nextMap(HashMap * map) 
