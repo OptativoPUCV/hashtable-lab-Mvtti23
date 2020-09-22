@@ -108,7 +108,13 @@ void * firstMap(HashMap * map)
   }
 }
 
-void * nextMap(HashMap * map) {
+void * nextMap(HashMap * map) 
+{
+  long pos = 0;
 
-    return NULL;
+  while(map->buckets[pos] == NULL)
+    pos++;
+  
+  map->current = pos + 1;
+  return map->buckets[pos]->value;
 }
