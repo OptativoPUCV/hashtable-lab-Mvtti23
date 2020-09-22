@@ -63,7 +63,7 @@ HashMap * createMap(long capacity)
     map->buckets = (Pair **) calloc (10,sizeof(Pair *));
     map->capacity = 10;
 
-    return NULL;
+    return map;
 }
 
 void eraseMap(HashMap * map,  char * key) {    
