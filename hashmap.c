@@ -51,15 +51,11 @@ void insertMap(HashMap * map, char * key, void * value)
   map->buckets[pos] = (Pair *) malloc (sizeof(Pair));
 
   //buscar posicion 
-  while(map->buckets[pos] != NULL) pos++;
+  while((map->buckets[pos] != NULL) && (map->buckets[pos]->key != key)) pos++;
 
-  //resolucion de colisiones
-  if(map->buckets[pos]->key != key)
-  {
-    map->buckets[pos]->key = strdup(key);
-    map->buckets[pos]->value = value;
-    map->size++;
-  }
+  map->buckets[pos]->key = strdup(key);
+  map->buckets[pos]->value = value;
+  map->size++;
 
 
 }
