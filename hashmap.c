@@ -53,7 +53,7 @@ void insertMap(HashMap * map, char * key, void * value)
   //resolucion de colisiones
   while(map->buckets[pos] != NULL) pos++;
 
-  strcpy(map->buckets[pos]->key, key);
+  map->buckets[pos]->key = strdup(key);
   map->buckets[pos]->value = value;
   map->size++;
 
