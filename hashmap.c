@@ -60,8 +60,8 @@ HashMap * createMap(long capacity)
 {
     printf("inicializando la tabla...");
     HashMap * map = (HashMap *)malloc(sizeof(HashMap));
-    map->buckets = (Pair **) calloc (10,sizeof(Pair *));
-    map->capacity = 10;
+    map->buckets = (Pair **) calloc (capacity ,sizeof(Pair *));
+    map->capacity = capacity;
 
     return map;
 }
