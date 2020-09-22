@@ -94,8 +94,7 @@ void * searchMap(HashMap * map,  char * key)
   //resolucion de colisiones
   while((map->buckets[pos] != NULL) && (map->buckets[pos]->key != NULL)) pos++;
 
-  if((map->buckets[pos] == NULL) || (map->buckets[pos]->key == NULL))
-    return NULL;
+  if(map->buckets[pos] == NULL) return NULL;
 
   map->current = pos;
   return map->buckets[pos]->value;
