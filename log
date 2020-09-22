@@ -119,3 +119,9 @@ Tue Sep 22 19:34:59 UTC 2020:
  tests:  2|5
 total_score: 20/70
 3337bed
+Tue Sep 22 19:42:54 UTC 2020: 
+ hashmap.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+ tests:  2|5
+total_score: 20/70
+2fce604

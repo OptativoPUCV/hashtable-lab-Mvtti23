@@ -86,11 +86,15 @@ void * searchMap(HashMap * map,  char * key)
 {   
   long pos = hash(key, map->capacity); 
 
-  while((map->buckets[pos] != NULL) && (is_equal(map->buckets[pos]->key, key) == 0)) pos++;
+  while(map->buckets[pos] != NULL) pos++;
 
-  map->current = pos;
-
-  return map->buckets[pos]->key;
+  if(map->buckets[pos] == NULL)
+    return NULL;
+  else
+  {
+    map->current = pos;
+    return map->buckets[pos]->key;
+  }
 }
 
 void * firstMap(HashMap * map) {
