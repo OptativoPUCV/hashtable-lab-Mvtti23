@@ -58,10 +58,11 @@ void enlarge(HashMap * map) {
 
 HashMap * createMap(long capacity)
 {
-    printf("inicializando la tabla...");
     HashMap * map = (HashMap *)malloc(sizeof(HashMap));
     map->buckets = (Pair **) calloc (capacity ,sizeof(Pair *));
     map->capacity = capacity;
+    map->current = -1;
+    map->size = 0;
 
     return map;
 }
