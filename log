@@ -272,3 +272,8 @@ Tue Sep 22 20:29:29 UTC 2020:
  tests:  4|5
 total_score: 20/70
 31dead5
+Tue Sep 22 20:30:07 UTC 2020: 
+ hashmap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+ tests:  0|0
+8927e90
