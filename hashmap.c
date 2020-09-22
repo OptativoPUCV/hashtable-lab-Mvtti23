@@ -99,10 +99,15 @@ void * firstMap(HashMap * map)
   long pos = 0;
   while(map->buckets[pos] == NULL) pos++;
 
+  map->current = pos;
   return map->buckets[pos]->value;
 }
 
 void * nextMap(HashMap * map) 
 {
-    return NULL; 
+  long pos = 0;
+  while(map->buckets[pos] == NULL) pos++;
+
+  map->current = pos;
+  return map->buckets[pos+1]->value;
 }
