@@ -95,14 +95,12 @@ void * searchMap(HashMap * map,  char * key)
   while((map->buckets[pos] != NULL) && (is_equal(map->buckets[pos]->key, key) != 0)) pos++;
 
   if(map->buckets[pos] == NULL) return NULL;
-
-  if(is_equal(map->buckets[pos]->key, key) != 1)
+  else
   {
     map->current = pos;
     return map->buckets[pos]->value;
   }
 
-  return 0;
 }
 
 void * firstMap(HashMap * map) 
