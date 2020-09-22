@@ -46,7 +46,7 @@ int is_equal(void* key1, void* key2){
 
 void insertMap(HashMap * map, char * key, void * value)
 {
-  long pos = hash(key, map->capacity);
+  long pos = hash(key, map->capacity); 
 
   map->buckets[pos] = (Pair *) malloc (sizeof(Pair));
 
@@ -82,10 +82,15 @@ void eraseMap(HashMap * map,  char * key) {
 
 }
 
-void * searchMap(HashMap * map,  char * key) {   
+void * searchMap(HashMap * map,  char * key)
+{   
+  long pos = hash(key, map->capacity); 
 
+  while((map->buckets[pos] != NULL) && (map->buckets[pos]->key != key)) pos++;
 
-    return NULL;
+  map->current = pos;
+
+  return map->buckets[pos]->key;
 }
 
 void * firstMap(HashMap * map) {
