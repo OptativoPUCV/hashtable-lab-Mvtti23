@@ -91,13 +91,13 @@ void * searchMap(HashMap * map,  char * key)
   while(map->buckets[pos] != NULL) pos++;
 
   map->current = pos;
-  return map->buckets[pos]->key;
-
+  return map->buckets[pos]->value;
 }
 
-void * firstMap(HashMap * map) {
+void * firstMap(HashMap * map) 
+{
 
-    return NULL;
+  return NULL;
 }
 
 void * nextMap(HashMap * map) {
