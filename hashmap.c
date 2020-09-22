@@ -89,10 +89,10 @@ void eraseMap(HashMap * map,  char * key)
 
 void * searchMap(HashMap * map,  char * key)
 {   
-  long pos = 0; 
+  long pos = hash(key, map->current); 
 
   //resolucion de colisiones
-  while((map->buckets[pos] != NULL) && (map->buckets[pos]->key != NULL)) pos++;
+  while(map->buckets[pos] != NULL) pos++;
 
   map->current = pos;
   return map->buckets[pos];
