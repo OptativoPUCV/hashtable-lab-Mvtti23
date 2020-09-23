@@ -46,7 +46,16 @@ int is_equal(void* key1, void* key2){
 
 void insertMap(HashMap * map, char * key, void * value)
 {
-  
+  long pos = hash(key, map->capacity);
+
+  //resolucion de colisiones
+  while((map->buckets[pos] != NULL) && (is_equal(map->buckets[pos]->key, key) == 1) && (pos <= map->capacity)) pos++;
+
+
+ //ingreso del bucket nuevo
+  map->buckets[pos] = createPair(key, value);
+  map->current = pos;
+  map->size += 1;
 }
 
 void enlarge(HashMap * map) {
