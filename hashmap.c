@@ -48,10 +48,8 @@ void insertMap(HashMap * map, char * key, void * value)
 {
   long pos = hash(key, map->capacity); 
 
-  map->buckets[pos] = (Pair *) malloc (sizeof(Pair));
-
   //resolucion de colisiones
-  while(map->buckets[pos] == NULL && is_equal(map->buckets[pos]->key, key) == 1) pos++;
+  while(map->buckets[pos] != NULL && is_equal(map->buckets[pos]->key, key) == 1) pos++;
 
   map->buckets[pos] = createPair(key, value);
   map->size += 1;
@@ -89,7 +87,7 @@ void * searchMap(HashMap * map,  char * key)
   long pos = hash(key, map->current); 
 
   //resolucion de colisiones
-  while((map->buckets[pos] != NULL) && (is_equal(map->buckets[pos]->key, key) != 0)) pos++;
+  while(map->buckets[pos] != NULL && is_equal(map->buckets[pos]->key, key) != 0) pos++;
 
   if(map->buckets[pos] == NULL) return NULL;
   else
