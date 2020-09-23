@@ -47,10 +47,15 @@ int is_equal(void* key1, void* key2){
 void insertMap(HashMap * map, char * key, void * value)
 {
   long pos = hash(key, map->capacity);
-  long auxpos = pos;
+  
 
   //resolucion de colisiones
-  while((map->buckets[pos] != NULL) && (is_equal(map->buckets[pos]->key, key) == 1) && (pos > auxpos)) pos++;
+  while(map->buckets[pos] != NULL) pos++;
+
+  //revisar capacidad
+  float capacidadMax = 0.7*map->capacity;
+  if(map->size >= capacidadMax)
+    enlarge(map);
 
 
  //ingreso del bucket nuevo
@@ -75,14 +80,20 @@ HashMap * createMap(long capacity)
   return map;
 }
 
+
 void eraseMap(HashMap * map,  char * key)
-{    
-  long pos = hash(key, map->capacity);
+{ 
+  /*   
+  //buscar el dato
+  long cont = 0;
+  while(cont <= map->capacity)
+    if(is_equal(map->buckets[cont]->key, key) == 1)
+      break;
+    cont++;
 
-  while((map->buckets[pos] != NULL) && (is_equal(map->buckets[pos]->key, key) == 1)) pos++;
-
+  //eliminar el dato
   map->buckets[pos]->key = NULL;
-
+  */
 }
 
 void * searchMap(HashMap * map,  char * key)
