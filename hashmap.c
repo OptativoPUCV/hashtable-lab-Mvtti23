@@ -51,7 +51,7 @@ void insertMap(HashMap * map, char * key, void * value)
   map->buckets[pos] = (Pair *) malloc (sizeof(Pair));
 
   //buscar posicion 
-  while((map->buckets[pos] == NULL) || (map->buckets[pos]->key != NULL) || (map->buckets[pos]->key == key)) pos++;
+  while((map->buckets[pos] == NULL) || (map->buckets[pos]->key != NULL)) pos++;
 
   map->buckets[pos]->key = strdup(key);
   map->buckets[pos]->value = value;
