@@ -47,9 +47,10 @@ int is_equal(void* key1, void* key2){
 void insertMap(HashMap * map, char * key, void * value)
 {
   long pos = hash(key, map->capacity);
+  long auxpos = pos;
 
   //resolucion de colisiones
-  while((map->buckets[pos] != NULL) && (is_equal(map->buckets[pos]->key, key) == 1) && (pos <= map->capacity)) pos++;
+  while((map->buckets[pos] != NULL) && (is_equal(map->buckets[pos]->key, key) == 1) && (pos > auxpos)) pos++;
 
 
  //ingreso del bucket nuevo
