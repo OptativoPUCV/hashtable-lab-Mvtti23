@@ -49,9 +49,9 @@ void insertMap(HashMap * map, char * key, void * value)
   long pos = hash(key, map->capacity);
 
   //resolucion de colisiones
-  if(is_equal(map->buckets[pos]->key, key) == 1) return;
+  while(map->buckets[pos] != NULL) pos++;
 
-  while(map->buckets[pos] != NULL && is_equal(map->buckets[pos]->key, key) == 1) pos++;
+  if(is_equal(map->buckets[pos]->key, key) == 1) pos++;
 
  //ingreso del bucket nuevo
   map->buckets[pos] = createPair(key, value);
