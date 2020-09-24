@@ -716,3 +716,9 @@ Thu Sep 24 15:10:06 UTC 2020:
  tests:  6|5
 total_score: 20/70
 e346674
+Thu Sep 24 15:10:32 UTC 2020: 
+ hashmap.c | 2 ++
+ 1 file changed, 2 insertions(+)
+ tests:  6|5
+total_score: 20/70
+8410e61
