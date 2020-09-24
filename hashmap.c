@@ -64,10 +64,33 @@ void insertMap(HashMap * map, char * key, void * value)
   map->size += 1;
 }
 
-void enlarge(HashMap * map) {
-    enlarge_called = 1; //no borrar (testing purposes)
+void enlarge(HashMap * map) 
+{
+  /*
+  enlarge_called = 1; //no borrar (testing purposes)
 
+  //guardar datos en buckets nuevo
+  Pair ** old_buckets;
+  long pos = 0;
+  while(pos <= map->capacity)
+  {
+    map->old_buckets[pos] = map->buckets[pos];
+    map->buckets[pos]->key = NULL;
+    pos++;
+  }
 
+  //duplicar capacidad y actualizar size
+  map->capacity *= 2;
+  map->size = 0;
+
+  //agregar a nuevo buckets
+  pos = 0;
+  while(pos <= map->capacity)
+  {
+    insertMap(map, map->old_buckets[pos]->key, map->old_buckets[pos]->value);
+    pos++;
+  }
+  */
 }
 
 HashMap * createMap(long capacity)
@@ -83,17 +106,14 @@ HashMap * createMap(long capacity)
 
 void eraseMap(HashMap * map,  char * key)
 { 
-  /*   
   //buscar el dato
-  long cont = 0;
-  while(cont <= map->capacity)
-    if(is_equal(map->buckets[cont]->key, key) == 1)
-      break;
-    cont++;
+  long pos = hash(key, map->capacity);
+
+  while(is_equal(map->buckets[pos]->key, key) == 0) pos++;
 
   //eliminar el dato
   map->buckets[pos]->key = NULL;
-  */
+  map->size--;
 }
 
 void * searchMap(HashMap * map,  char * key)
