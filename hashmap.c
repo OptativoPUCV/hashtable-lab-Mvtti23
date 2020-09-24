@@ -115,7 +115,7 @@ void eraseMap(HashMap * map,  char * key)
 { 
   
   //buscar casilla
-  long pos = 0;
+  long pos = hash(key, map->capacity);
 
   while(is_equal(key, map->buckets[pos]->key) == 0) pos++;
 
