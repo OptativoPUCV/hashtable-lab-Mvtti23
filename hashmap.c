@@ -121,7 +121,7 @@ void * searchMap(HashMap * map,  char * key)
 {   
   long pos = hash(key, map->capacity);
 
-  while(is_equal(map->buckets[pos]->key, key) == 0 && map->buckets[pos] != NULL) pos++;
+  while(is_equal(map->buckets[pos]->key, key) == 1) pos++;
 
   if(map->buckets[pos] == NULL)
     return NULL;
