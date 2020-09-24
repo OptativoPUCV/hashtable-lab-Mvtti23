@@ -140,17 +140,19 @@ void * searchMap(HashMap * map,  char * key)
 void * firstMap(HashMap * map) 
 {
   long pos = 0;
+
   while((map->buckets[pos] == NULL) || map->buckets[pos]->key == NULL) pos++;
 
   map->current = pos;
+
   return map->buckets[pos]->value;
 }
 
 void * nextMap(HashMap * map) 
 {
   long pos = map->current;
-  while(map->buckets[pos] == NULL)
-   pos++;
+
+  while(map->buckets[pos] == NULL || map->buckets[pos]->key == NULL) pos++;
 
   map->current = pos;
 
