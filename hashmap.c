@@ -50,7 +50,7 @@ void insertMap(HashMap * map, char * key, void * value)
   long pos = hash(key, map->capacity);
   
   //resolucion de colisiones
-  while(map->buckets[pos] != NULL) pos++;
+  while(map->buckets[pos]->key != NULL) pos++;
 
   //revisar capacidad
   float capacidadMax = 0.7*map->capacity;
