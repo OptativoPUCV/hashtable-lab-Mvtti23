@@ -61,7 +61,7 @@ void insertMap(HashMap * map, char * key, void * value)
  //ingreso del bucket nuevo
   map->buckets[pos] = createPair(key, value);
   map->current = pos;
-  map->size += 1;
+  map->size++;
   
 }
 
