@@ -106,10 +106,11 @@ HashMap * createMap(long capacity)
 
 void eraseMap(HashMap * map,  char * key)
 { 
-  //buscar el dato
+  //buscar casilla
   long pos = hash(key, map->capacity);
 
   while(is_equal(map->buckets[pos]->key, key) == 0) pos++;
+
 
   //eliminar el dato
   map->buckets[pos]->key = NULL;
@@ -120,7 +121,7 @@ void * searchMap(HashMap * map,  char * key)
 {   
   long pos = hash(key, map->capacity);
 
-  while(is_equal(map->buckets[pos]->key, key) == 0) pos++;
+  while(is_equal(map->buckets[pos]->key, key) == 0 && map->buckets[pos] != NULL) pos++;
 
   if(map->buckets[pos] == NULL)
     return NULL;
