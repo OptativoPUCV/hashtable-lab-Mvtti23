@@ -49,7 +49,7 @@ void insertMap(HashMap * map, char * key, void * value)
   long pos = hash(key, map->capacity);
   
   //resolucion de colisiones
-  while(map->buckets[pos] != NULL && pos < map->capacity-1) pos++;
+  while(map->buckets[pos] != NULL && (pos < map->capacity-1)) pos++;
   if(pos == map->capacity-1)
     pos = 0;
 
