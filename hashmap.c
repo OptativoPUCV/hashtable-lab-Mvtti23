@@ -52,17 +52,17 @@ void insertMap(HashMap * map, char * key, void * value)
   //resolucion de colisiones
   while(map->buckets[pos] != NULL) pos++;
 
-  
+  //revisar capacidad
+  float capacidadMax = 0.7*map->capacity;
+  if(map->size >= capacidadMax)
+    enlarge(map);
 
  //ingreso del bucket nuevo
   map->buckets[pos] = createPair(key, value);
   map->current = pos;
   map->size++;
 
-  //revisar capacidad
-  float capacidadMax = 0.7*map->capacity;
-  if(map->size >= capacidadMax)
-    enlarge(map);
+  
   
 }
 
