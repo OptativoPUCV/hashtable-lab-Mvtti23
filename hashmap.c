@@ -109,7 +109,7 @@ void eraseMap(HashMap * map,  char * key)
   //buscar el dato
   long pos = hash(key, map->capacity);
 
-  while(is_equal(map->buckets[pos]->key, key) == 0 || map->buckets[pos] == NULL) pos++;
+  while(is_equal(map->buckets[pos]->key, key) == 0) pos++;
 
   //eliminar el dato
   map->buckets[pos]->key = NULL;
