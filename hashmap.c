@@ -130,10 +130,12 @@ void eraseMap(HashMap * map,  char * key)
 
 void * searchMap(HashMap * map,  char * key)
 { 
-  
   long pos = hash(key, map->capacity);
 
-  while(is_equal(map->buckets[pos]->key, key) == 0) pos++;
+  while((is_equal(key, map->buckets[pos]->key) == 0) && (map->buckets[pos] != NULL) && (pos < map->capacity-1)) pos++;
+  if(pos == map->capacity-1)
+    pos = 0;
+  while((is_equal(key, map->buckets[pos]->key) == 0) && (map->buckets[pos] != NULL) && (pos < map->capacity-1)) pos++;
 
   if(map->buckets[pos] == NULL)
     return NULL;
