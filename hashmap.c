@@ -129,7 +129,6 @@ void * searchMap(HashMap * map,  char * key)
   while(is_equal(map->buckets[pos]->key, key) == 0)
   {
     pos++;
-    map->current++;
   }
 
   if(map->buckets[pos] == NULL)
