@@ -810,3 +810,8 @@ Thu Sep 24 22:37:36 UTC 2020:
  1 file changed, 1 deletion(-)
  tests:  0|0
 008a020
+Thu Sep 24 22:53:21 UTC 2020: 
+ hashmap.c | 20 +++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
+ tests:  0|0
+83ee4a6

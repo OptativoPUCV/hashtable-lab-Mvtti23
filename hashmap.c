@@ -48,7 +48,6 @@ void insertMap(HashMap * map, char * key, void * value)
 {
   long pos = hash(key, map->capacity);
   
-
   //resolucion de colisiones
   while(map->buckets[pos] != NULL) pos++;
 
@@ -66,15 +65,20 @@ void insertMap(HashMap * map, char * key, void * value)
 
 void enlarge(HashMap * map) 
 {
-  /*
   enlarge_called = 1; //no borrar (testing purposes)
 
-  //guardar datos en buckets nuevo
-  Pair ** old_buckets;
+  //Crear mapa auxiliar
+  HashMap * aux_map = (HashMap *)malloc(sizeof(HashMap));
+  aux_map->buckets = (Pair **) calloc (map->capacity ,sizeof(Pair *));
+  aux_map->capacity = map->capacity;
+  aux_map->current = -1;
+
+  //copiar map en map auxiliar
   long pos = 0;
-  while(pos <= map->capacity)
+  while(pos <= map->size)
   {
-    map->old_buckets[pos] = map->buckets[pos];
+    insertMap(aux_map, map->buckets[pos]->key, map->buckets[pos]->value);
+    aux_map->size++;
     map->buckets[pos]->key = NULL;
     pos++;
   }
@@ -87,10 +91,11 @@ void enlarge(HashMap * map)
   pos = 0;
   while(pos <= map->capacity)
   {
-    insertMap(map, map->old_buckets[pos]->key, map->old_buckets[pos]->value);
+    insertMap(map, aux_map->buckets[pos]->key, aux_map->buckets[pos]->value);
+    map->size++;
     pos++;
   }
-  */
+  
 }
 
 HashMap * createMap(long capacity)
