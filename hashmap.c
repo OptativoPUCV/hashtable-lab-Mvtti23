@@ -128,11 +128,6 @@ void eraseMap(HashMap * map,  char * key)
     else
       pos++;
   }
-
-
-  //eliminar el dato
-  map->buckets[pos]->key = NULL;
-  map->size--;
   
 }
 
