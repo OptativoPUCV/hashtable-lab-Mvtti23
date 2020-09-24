@@ -149,7 +149,7 @@ void * firstMap(HashMap * map)
 void * nextMap(HashMap * map) 
 {
   long pos = map->current;
-  while((map->buckets[pos] == NULL) && (map->buckets[pos]->value == NULL))
+  while(map->buckets[pos] == NULL)
    pos++;
 
   map->current = pos;
