@@ -53,7 +53,7 @@ void insertMap(HashMap * map, char * key, void * value)
   if(pos == map->capacity-1)
     pos = 0;
 
-  while(map->buckets[pos] != NULL && pos < map->capacity-1) pos++;
+  while(map->buckets[pos] != NULL && (pos < map->capacity-1)) pos++;
   
 
   //revisar capacidad
