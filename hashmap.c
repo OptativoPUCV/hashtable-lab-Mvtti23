@@ -75,8 +75,13 @@ void enlarge(HashMap * map)
   long pos = 0;
   while(pos < map->capacity)
   {
-    map->buckets[pos]->key = NULL;
-    pos++;
+    if(map->buckets[pos] == NULL) pos++;
+    else
+    {
+      map->buckets[pos]->key = NULL;
+      pos++;
+    }
+
   }
 
   //duplicar capacidad y actualizar size
