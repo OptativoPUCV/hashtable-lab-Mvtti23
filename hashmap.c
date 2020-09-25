@@ -143,6 +143,7 @@ void * searchMap(HashMap * map,  char * key)
     {
       map->current = pos;
       return map->buckets[pos]->value;
+      break;
     }
 
     if(map->buckets[pos] == NULL)
