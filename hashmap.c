@@ -68,19 +68,14 @@ void enlarge(HashMap * map)
 {
   enlarge_called = 1; //no borrar (testing purposes)
 
-  //Crear mapa auxiliar
-  HashMap * aux_map = (HashMap *)malloc(sizeof(HashMap));
-  aux_map->buckets = (Pair **) calloc (map->capacity ,sizeof(Pair *));
-  aux_map->capacity = map->capacity;
-  aux_map->current = -1;
+  //Crear buckets auxiliar
+  Pair ** aux_buckets = map->buckets;
 
-  //copiar map en map auxiliar
+  //limpiar buckets
   long pos = 0;
-  while(pos <= map->size)
+  while(pos < map->capacity)
   {
-    insertMap(aux_map, map->buckets[pos]->key, map->buckets[pos]->value);
-    aux_map->size++;
-    map->buckets[pos]->key = NULL;
+    eraseMap(map, map->buckets[pos]->key);
     pos++;
   }
 
@@ -88,15 +83,8 @@ void enlarge(HashMap * map)
   map->capacity *= 2;
   map->size = 0;
 
-  //agregar a nuevo buckets
-  pos = 0;
-  while(pos <= map->capacity)
-  {
-    insertMap(map, aux_map->buckets[pos]->key, aux_map->buckets[pos]->value);
-    map->size++;
-    pos++;
-  }
-  
+  //insertar en bucket agrandado
+  map->buckets = aux_buckets;
 }
 
 HashMap * createMap(long capacity)
