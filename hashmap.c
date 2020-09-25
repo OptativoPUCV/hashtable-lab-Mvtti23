@@ -116,10 +116,12 @@ void eraseMap(HashMap * map,  char * key)
   //buscar casilla
   long pos = hash(key, map->capacity);
 
-  while((is_equal(key, map->buckets[pos]->key) == 0) && (map->buckets[pos] != NULL) && (pos < map->capacity-1)) pos++;
+  while(map->buckets[pos] != NULL && is_equal(map->buckets[pos]->key, key) == 0) pos++;
+  if(pos == map->capacity) pos = 0;
+  while(map->buckets[pos] != NULL && is_equal(map->buckets[pos]->key, key) == 0) pos++;
 
 
-  //eliminar el dato
+  //si encuentra el dato
   map->buckets[pos]->key = NULL;
   map->size--;
   
