@@ -129,25 +129,14 @@ void * searchMap(HashMap * map,  char * key)
 { 
   long pos = hash(key, map->capacity);
   
-  while(is_equal(map->buckets[pos]->key, key) == 0 && pos<map->capacity && map->buckets[pos] != NULL) pos++;
-
+  while(map->buckets[pos] != NULL && is_equal(map->buckets[pos]->key, key) == 0) pos++;
   if(map->buckets[pos] == NULL) return NULL;
-
-  if(pos == map->capacity-1) pos = 0; //si el pos esta en el final del arreglo
-
-  //se revisa nuevamente
-  while(is_equal(map->buckets[pos]->key, key) == 0 && pos<map->capacity && map->buckets[pos] != NULL) pos++;
-
-  if(map->buckets[pos] == NULL) return NULL;
-
-  //si encuentra la clave buscada
-  if(is_equal(map->buckets[pos]->key, key) == 1)
-  {
-    map->current = pos;
-    return map->buckets[pos]->value;
-  }
-
-  return NULL;
+  if(pos == map->capacity) pos = 0;
+  while(map->buckets[pos] != NULL && is_equal(map->buckets[pos]->key, key) == 0) pos++;
+  
+  //en caso de encontrar la clave buscada
+  map->current = pos;
+  return map->buckets[pos]->value;
 }
 
 void * firstMap(HashMap * map) 
