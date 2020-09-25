@@ -91,7 +91,7 @@ void enlarge(HashMap * map)
   pos = 0;
   while(pos < map->capacity)
   {
-    if(aux_buckets[pos] == NULL) pos++;
+    if(aux_buckets[pos] == NULL || aux_buckets[pos]->key == NULL) pos++;
     else
     {
       insertMap(map, aux_buckets[pos]->key, aux_buckets[pos]->value);
