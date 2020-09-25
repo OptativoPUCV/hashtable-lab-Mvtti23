@@ -78,7 +78,7 @@ void enlarge(HashMap * map)
   
   //insertar en bucket agrandado
   long pos = 0;
-  while(pos < map->capacity)
+  while(pos < map->capacity/2)
   {
     if(aux_buckets[pos] == NULL || aux_buckets[pos]->key == NULL) pos++;
     else
