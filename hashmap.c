@@ -131,18 +131,25 @@ void eraseMap(HashMap * map,  char * key)
 void * searchMap(HashMap * map,  char * key)
 { 
   long pos = hash(key, map->capacity);
+  if(is_equal(key, map->buckets[pos]->key) == 1) //si es la casilla correspondiente
+  {
+    map->current = pos;
+    return map->buckets[pos]->value;
+  }
 
-  while((is_equal(key, map->buckets[pos]->key) == 0) && (map->buckets[pos] != NULL) && (pos < map->capacity-1)) pos++;
-  if(pos == map->capacity-1)
-    pos = 0;
-  while((is_equal(key, map->buckets[pos]->key) == 0) && (map->buckets[pos] != NULL) && (pos < map->capacity-1)) pos++;
+  for(pos = 0 ; pos < map->capacity ; pos++)
+  {
+    if(is_equal(key, map->buckets[pos]->key) == 1) //si encuentra la clave buscada
+    {
+      map->current = pos;
+      return map->buckets[pos]->value;
+    }
 
-  if(map->buckets[pos] == NULL)
-    return NULL;
+    if(map->buckets[pos] == NULL)
+      return NULL;
+  }
 
-  map->current = pos;
-
-  return map->buckets[pos]->value;
+  return NULL;
   
 }
 
