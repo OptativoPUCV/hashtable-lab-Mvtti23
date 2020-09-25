@@ -151,9 +151,12 @@ void * nextMap(HashMap * map)
 { 
   long pos = map->current+1;
 
-  while(map->buckets[pos] == NULL || map->buckets[pos]->key == NULL) pos++;
-  if(pos == map->capacity) return NULL;
-  while(map->buckets[pos] == NULL || map->buckets[pos]->key == NULL) pos++;
+  while(map->buckets[pos] == NULL || map->buckets[pos]->key == NULL) 
+  {
+    if(pos == map->capacity) return NULL;
+    else pos++;
+  }
+  
 
   map->current = pos;
 
