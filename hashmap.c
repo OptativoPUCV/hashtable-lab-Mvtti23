@@ -141,15 +141,15 @@ void * searchMap(HashMap * map,  char * key)
   {
     if(is_equal(key, map->buckets[i]->key) == 1) //si encuentra la clave buscada
     {
-      map->current = i;
-      return map->buckets[i]->value;
+      pos = i;
     }
 
     if(map->buckets[i] == NULL)
       return NULL;
   }
 
-  return NULL;
+  map->current = pos;
+  return map->buckets[pos]->value;
   
 }
 
