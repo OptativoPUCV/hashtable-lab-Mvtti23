@@ -121,9 +121,11 @@ void eraseMap(HashMap * map,  char * key)
 
 
   //si encuentra el dato
-  map->buckets[pos]->key = NULL;
-  map->size--;
-
+  if(map->buckets[pos] != NULL)
+  {
+    map->buckets[pos]->key = NULL;
+    map->size--;
+  }
 }
 
 void * searchMap(HashMap * map,  char * key)
