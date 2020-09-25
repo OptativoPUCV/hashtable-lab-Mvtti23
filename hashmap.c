@@ -132,14 +132,14 @@ void * searchMap(HashMap * map,  char * key)
 { 
   long pos = hash(key, map->capacity);
   
-  while(is_equal(map->buckets[pos]->key, key) == 0 && pos<map->capacity-1 && map->buckets[pos] != NULL) pos++;
+  while(is_equal(map->buckets[pos]->key, key) == 0 && pos<map->capacity && map->buckets[pos] != NULL) pos++;
 
   if(map->buckets[pos] == NULL) return NULL;
 
   if(pos == map->capacity-1) pos = 0; //si el pos esta en el final del arreglo
 
   //se revisa nuevamente
-  while(is_equal(map->buckets[pos]->key, key) == 0 && pos<map->capacity-1 && map->buckets[pos] != NULL) pos++;
+  while(is_equal(map->buckets[pos]->key, key) == 0 && pos<map->capacity && map->buckets[pos] != NULL) pos++;
 
   if(map->buckets[pos] == NULL) return NULL;
 
