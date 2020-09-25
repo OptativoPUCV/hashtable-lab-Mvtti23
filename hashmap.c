@@ -137,7 +137,7 @@ void * searchMap(HashMap * map,  char * key)
     return map->buckets[pos]->value;
   }
 
-  for(pos = 0 ; pos < map->capacity ; pos++)
+  for(pos = 0 ; pos <= map->capacity ; pos++)
   {
     if(is_equal(key, map->buckets[pos]->key) == 1) //si encuentra la clave buscada
     {
