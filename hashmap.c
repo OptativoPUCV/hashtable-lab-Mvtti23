@@ -121,11 +121,8 @@ void eraseMap(HashMap * map,  char * key)
 
 
   //si encuentra el dato
-  if(pos <= map->capacity)
-  {
-    map->buckets[pos]->key = NULL;
-    map->size--;
-  }
+  map->buckets[pos]->key = NULL;
+  map->size--;
 
 }
 
