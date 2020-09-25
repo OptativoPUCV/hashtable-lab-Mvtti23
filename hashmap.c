@@ -118,6 +118,7 @@ void eraseMap(HashMap * map,  char * key)
   while(map->buckets[pos] != NULL && is_equal(map->buckets[pos]->key, key) == 0) pos++;
   if(pos == map->capacity) pos = 0;
   while(map->buckets[pos] != NULL && is_equal(map->buckets[pos]->key, key) == 0) pos++;
+  if(pos == map->capacity) exit(1);
 
 
   //si encuentra el dato
