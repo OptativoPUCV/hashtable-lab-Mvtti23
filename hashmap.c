@@ -89,7 +89,12 @@ void enlarge(HashMap * map)
   map->size = 0;
 
   //insertar en bucket agrandado
-  map->buckets = aux_buckets;
+  pos = 0;
+  while(pos < map->capacity)
+  {
+    insertMap(map, aux_buckets[pos]->key, aux_buckets[pos]->value);
+    pos++;
+  }
 }
 
 HashMap * createMap(long capacity)
@@ -156,7 +161,6 @@ void * nextMap(HashMap * map)
     if(pos == map->capacity) return NULL;
     else pos++;
   }
-  
 
   map->current = pos;
 
