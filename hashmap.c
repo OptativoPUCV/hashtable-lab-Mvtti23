@@ -72,18 +72,18 @@ void enlarge(HashMap * map)
   Pair ** aux_buckets = map->buckets;
 
   //nuevo buckets
-  map->buckets = (Pair **) calloc (map->capacity ,sizeof(Pair *));
-  map->capacity *= 2;
+  map->buckets = (Pair **) calloc (map->capacity*2 ,sizeof(Pair *));
   map->size = 0;
   
   //insertar en bucket agrandado
   long pos = 0;
   while(pos < map->capacity)
   {
-    if(aux_buckets[pos] == NULL) pos++;
+    if(aux_buckets[pos] == NULL || aux_buckets[pos]->key == NULL) pos++;
     else
     {
       insertMap(map, aux_buckets[pos]->key, aux_buckets[pos]->value);
+      map->size++;
       pos++;
     }
   }
