@@ -75,7 +75,7 @@ void enlarge(HashMap * map)
   long pos = 0;
   while(pos < map->capacity)
   {
-    eraseMap(map, map->buckets[pos]->key);
+    map->buckets[pos]->key = NULL;
     pos++;
   }
 
